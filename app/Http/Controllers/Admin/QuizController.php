@@ -50,7 +50,7 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -87,6 +87,8 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404,'Veritabanın da Böyle Bir Quiz Yok');
+        $quiz->delete();
+        return redirect()->route('quizzes.index')->withSuccess('İşlem Başarılı');
     }
 }
