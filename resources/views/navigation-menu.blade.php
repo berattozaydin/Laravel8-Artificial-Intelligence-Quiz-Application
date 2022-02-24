@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                         <img src="{{asset('assets')}}/resim/quizler.png">
                     </a>
                 </div>
 
@@ -100,14 +100,28 @@
                                     <x-jet-dropdown-link href="{{ route('quizzes.index') }}">
                                       Quizler
                                     </x-jet-dropdown-link>
+                                    <x-jet-dropdown-link href="{{ route('admin_setting') }}">
+                                        Site Ayarları
+                                    </x-jet-dropdown-link>
                                 @endif
+
+                            @if(auth()->user()->type=='teacher')
+                                <!-- Account Management -->
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                       Quiz İşlemleri
+                                    </div>
+
+                                    <x-jet-dropdown-link href="{{ route('quizzes.index') }}">
+                                        Quizler
+                                    </x-jet-dropdown-link>
+                            @endif
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                              Profil Yönetimi
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                Profil
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -125,7 +139,7 @@
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    Çıkış Yap
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>
