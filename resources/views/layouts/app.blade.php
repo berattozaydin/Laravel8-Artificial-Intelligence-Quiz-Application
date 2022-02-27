@@ -1,3 +1,6 @@
+@php
+    $setting = \App\Http\Controllers\Admin\SettingController::getsetting()
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -6,7 +9,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{$header}}</title>
-
+        <meta name="description" content="{{$setting->description}}">
+        <meta name="author" content="{{$setting->company}}">
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -56,7 +60,7 @@
                 <div class="container">
             <div class="row">
             <div class="col-md-9">
-            <div class="f-credit">&copy;Bütün Hakları <a href="https://beratozaydin.com"> beratozaydin.com</a> a Aittir</div>
+            <div class="f-credit">&copy;Bütün Hakları <a href="https://{{$setting->company}}"> {{$setting->company}}</a> a Aittir</div>
             </div>
             </div>
                 </div>
