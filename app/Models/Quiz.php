@@ -9,4 +9,7 @@ class Quiz extends Model
 {
     use HasFactory;
      protected $fillable=['title','description','finished_at'];
+     public function sorulars(){
+         return $this->hasMany('App\Models\Sorular');
+     }
 }

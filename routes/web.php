@@ -30,3 +30,8 @@ Route::group(['middleware'=>['auth','isAdmin'],'prefix'=>'admin'],function(){
     Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
 
 });
+Route::group(['middleware'=>['auth','isTeacher'],'prefix'=>'teacher'],function(){
+    Route::get('quizzes/{id}',[QuizController::class,'destroy'])->whereNumber('id')->name('quizzes.destroy');
+    Route::resource('quizzes',QuizController::class);
+    Route::resource('quiz/{quiz_id}/sorulars',\App\Http\Controllers\Admin\SorularController::class);
+});

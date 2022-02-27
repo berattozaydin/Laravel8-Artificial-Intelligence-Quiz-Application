@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Sorular;
 use Illuminate\Http\Request;
-
+use App\Models\Quiz;
 class SorularController extends Controller
 {
     /**
@@ -12,9 +13,12 @@ class SorularController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        //soru listeleme
+//quiz bilgisiyle sorular gönderiliyor.
+        $sorulars=Quiz::whereId($id)->with('sorulars')->first();
+        return view('admin.sorular.list',compact('sorulars'));
     }
 
     /**
@@ -24,7 +28,7 @@ class SorularController extends Controller
      */
     public function create($quiz_id)
     {
-
+ return "create sayfa".$quiz_id;
     }
 
     /**
@@ -46,7 +50,7 @@ class SorularController extends Controller
      */
     public function show($quiz_id,$id)
     {
-        //
+        return $quiz_id.'-'.$id;
     }
 
     /**
