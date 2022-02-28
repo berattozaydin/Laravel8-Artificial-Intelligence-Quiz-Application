@@ -67,9 +67,10 @@ class SorularController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($quiz_id,$id)
     {
-        //
+        $data=Quiz::find($quiz_id)->sorulars()->whereId($id)->first();
+        return view('admin.sorular.edit',compact('data'));
     }
 
     /**
@@ -79,9 +80,17 @@ class SorularController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $quiz_id,$id)
     {
-        //
+        if($request->hasFile('image_question')){
+            $dosyaadi =Str::slug($request->question).'.'.$request->image_question->extension();
+            $dosyayüklemeyeri='uploads/'.$dosyaadi;
+            $request->image_question->move(public_path('uploads'),$dosyaadi);
+            $request->merge(['image_question'=>$dosyayüklemeyeri]);
+        }
+        $data = Quiz::find($quiz_id)->sorulars()->whereId($id)->first()->update($request->post());
+        return redirect()->route('sorulars.index',$quiz_id);
+
     }
 
     /**

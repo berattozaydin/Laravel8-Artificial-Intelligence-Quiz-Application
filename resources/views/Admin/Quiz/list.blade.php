@@ -22,7 +22,6 @@
                   <td>{{$quiz->status}}</td>
                   <td>{{$quiz->finished_at}}</td>
                   <td>
-
                       <a href="{{route('quizzes.edit',$quiz->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Düzenle</a>
                       <a href="{{route('sorulars.index',$quiz->id)}}" class="btn btn-sm btn-Question"><i class="fa fa-edit"></i>Sorular</a>
                       <a href="{{route('quizzes.destroy',$quiz->id)}}" class="btn btn-sm btn-danger"><i class="fa fa-times"></i>Sil</a>
