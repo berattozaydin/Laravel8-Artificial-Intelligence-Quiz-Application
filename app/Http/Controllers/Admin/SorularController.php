@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sorular;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 class SorularController extends Controller
@@ -26,9 +27,10 @@ class SorularController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($quiz_id)
+    public function create($id)
     {
- return "create sayfa".$quiz_id;
+        $quiz=Quiz::find($id);
+        return view('Admin.sorular.create',compact('quiz'));
     }
 
     /**
@@ -37,9 +39,15 @@ class SorularController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        if($request->hasFile('image_question')){
+            $dosyaadi =Str::slug($request->question).'.'.$request->image_question->extension();
+            $dosyayüklemeyeri='uploads/'.$dosyaadi;
+            $request->image_question->move(public_path('uploads'),$dosyaadi);
+            $request->merge(['image_question'=>$dosyayüklemeyeri]);
+        }
+        Quiz::find($id)->sorulars()->create($request->post());
     }
 
     /**

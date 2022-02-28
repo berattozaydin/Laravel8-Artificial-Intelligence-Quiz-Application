@@ -19,11 +19,11 @@ return new class extends Migration
             $table->longText('question');
             $table->longText('image_question')->nullable();//quiz resimli olabilir ama biz bunu null atıyoruz resim olmasına gerek yok ama sorusu olmak zorunda
             //sorular 4 şıklı
-            $table->longText('answer1');
-            $table->longText('answer2');
-            $table->longText('answer3');
-            $table->longText('answer4');
-            $table->enum('correctanswer',['answer1','answer2','answer3','answer4']);//4ünden 1 ni alır enum olduğundan
+            $table->longText('a');
+            $table->longText('b');
+            $table->longText('c');
+            $table->longText('d');
+            $table->enum('correctanswer',['a','b','c','d']);//4ünden 1 ni alır enum olduğundan
             $table->timestamps();
             $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');//quizler tablosuyla sorular tablosunu bağlıyoruz quiz idleri birbirine;
             //cascade eğer quizi silersek onun içindeki sorularıda siliyor.

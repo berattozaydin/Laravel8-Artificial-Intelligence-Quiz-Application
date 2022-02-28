@@ -15,10 +15,10 @@
                   <th scope="col" style="background-color:#0dcaf0">Resim</th>
                       @endif
                   @endforeach
-                  <th scope="col" style="background-color:#0dcaf0">A</th>
-                  <th scope="col" style="background-color:#0dcaf0">B</th>
-                  <th scope="col" style="background-color:#0dcaf0">C</th>
-                  <th scope="col" style="background-color:#0dcaf0">D</th>
+                  <th scope="col" style="background-color:#0dcaf0">A Şıkkı</th>
+                  <th scope="col" style="background-color:#0dcaf0">B Şıkkı</th>
+                  <th scope="col" style="background-color:#0dcaf0">C Şıkkı</th>
+                  <th scope="col" style="background-color:#0dcaf0">D Şıkkı</th>
                   <th scope="col" style="background-color:#0dcaf0">Doğru Şık</th>
                   <th scope="col" style="background-color:#0dcaf0">Ayarlar</th>
               </tr>
@@ -26,15 +26,15 @@
               <tbody>
               @foreach($sorulars->sorulars as $sorular)
                   <tr>
-                      <th>{{$sorular->question}}</th>
+                      <th>{!! $sorular->question!!}</th>
                       @if($sorular->image_question!==null)
-                      <th>{{$sorular->image_question}}</th>
+                      <th>{!!$sorular->image_question!!}</th>
                       @endif
-                      <th>{{$sorular->answer1}}</th>
-                      <th>{{$sorular->answer2}}</th>
-                      <th>{{$sorular->answer3}}</th>
-                      <th>{{$sorular->answer4}}</th>
-                      <th>{{$sorular->correctanswer}}</th>
+                      <th>{!! $sorular->a !!} </th>
+                      <th>{!!  $sorular->b !!} </th>
+                      <th>{!! $sorular->c !!}</th>
+                      <th>{!! $sorular->d !!}</th>
+                      <th>{!! $sorular->correctanswer !!}</th>
 
                       <td>
 
