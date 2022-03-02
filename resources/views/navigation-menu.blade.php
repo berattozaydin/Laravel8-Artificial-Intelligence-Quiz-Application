@@ -96,10 +96,6 @@
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                        Admin İşlemleri
                                     </div>
-
-                                    <x-jet-dropdown-link href="{{ route('quizzes.index') }}">
-                                      Quizler
-                                    </x-jet-dropdown-link>
                                     <x-jet-dropdown-link href="{{ route('admin_setting') }}">
                                         Site Ayarları
                                     </x-jet-dropdown-link>

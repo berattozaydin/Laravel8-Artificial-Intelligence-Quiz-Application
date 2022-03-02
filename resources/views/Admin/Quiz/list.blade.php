@@ -12,6 +12,7 @@
                   <th scope="col" style="background-color:#0dcaf0"> Quiz</th>
                   <th scope="col" style="background-color:#0dcaf0">Durum</th>
                   <th scope="col" style="background-color:#0dcaf0">Bitiş Tarihi</th>
+                  <th scope="col" style="background-color:#0dcaf0">Quize Ait Soru Sayısı</th>
                   <th scope="col" style="background-color:#0dcaf0"> İşlemler</th>
               </tr>
               </thead>
@@ -19,8 +20,17 @@
               @foreach($quizzes as $quiz)
               <tr>
                   <th>{{$quiz->title}}</th>
-                  <td>{{$quiz->status}}</td>
+                  <td>
+                  @if($quiz->status=='publish')
+                      Aktif
+                      @elseif($quiz->status=='passive')
+                      Pasif
+                      @else
+                      Beklemede
+                      @endif
+                  </td>
                   <td>{{$quiz->finished_at}}</td>
+                  <td>{{count($quiz->sorulars)}}</td>
                   <td>
                       <a href="{{route('quizzes.edit',$quiz->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Düzenle</a>
                       <a href="{{route('sorulars.index',$quiz->id)}}" class="btn btn-sm btn-Question"><i class="fa fa-edit"></i>Sorular</a>

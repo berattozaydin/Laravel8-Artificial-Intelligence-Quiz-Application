@@ -99,8 +99,9 @@ class SorularController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($quiz_id,$id)
     {
-        //
+       Quiz::find($quiz_id)->sorulars()->whereId($id)->delete();
+       return redirect()->route('sorulars.index',$quiz_id);
     }
 }

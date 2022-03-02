@@ -38,7 +38,7 @@
                       <td>
 
                           <a href="{{route('sorulars.edit',[$sorular->quiz_id,$sorular->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Düzenle</a>
-                          <a href="{{route('sorulars.edit',[$sorular->quiz_id,$sorular->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Sil</a>
+                          <a href="{{route('sorulars.destroy',[$sorular->quiz_id,$sorular->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>Sil</a>
                       </td>
                   </tr>
               @endforeach
