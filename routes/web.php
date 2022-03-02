@@ -15,21 +15,25 @@ use App\Http\Controllers\Admin\SorularController;
 */
 
 
-Route::get('/', function () {
-    return view('register');
+Route::get('/home2', function () {
+    return view('home2');
 });
-Route::middleware(['auth:sanctum', 'verified'])->get('/panel', function () {
-    return view('dashboard');
-})->name('dashboard');
 
-Route::group(['middleware'=>['auth','isAdmin'],'prefix'=>'admin'],function(){
+Route::get('/', [\App\Http\Controllers\AnaController::class, 'index'])->name('anasayfa');
+/*Route::group(['middleware'=>['auth','isAdmin'],'prefix'=>'admin'],function(){
     Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
     Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
-
-});
+});*/
 Route::group(['middleware'=>['auth','isTeacher'],'prefix'=>'teacher'],function(){
+    Route::get('dashboard',[\App\Http\Controllers\AnaController::class,'adminpanel'])->name('dashboard');
     Route::get('quizzes/{id}',[QuizController::class,'destroy'])->whereNumber('id')->name('quizzes.destroy');
     Route::resource('quizzes',QuizController::class);
     Route::resource('quiz/{quiz_id}/sorulars',\App\Http\Controllers\Admin\SorularController::class);
     Route::get('quiz/{quiz_id}/sorular/{id}',[SorularController::class,'destroy'])->whereNumber('id')->name('sorulars.destroy');
+});
+#UserSection
+
+Route::group(['middleware'=>['auth','isUser'],'prefix'=>'user'],function(){
+
+
 });

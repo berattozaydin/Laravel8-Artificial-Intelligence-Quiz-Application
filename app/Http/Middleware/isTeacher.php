@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class isTeacher
+class isteacher
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class isTeacher
     public function handle(Request $request, Closure $next)
     {
         if(auth()->user()->type!=='teacher'){
-            return redirect()->route('dashboard');
+            return redirect()->route('anasayfa');
         }
         return $next($request);
     }

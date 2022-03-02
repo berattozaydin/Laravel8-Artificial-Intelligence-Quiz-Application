@@ -8,12 +8,6 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
-            <div>
-                <x-jet-label for="name" value="Okul Numarası" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="okulno" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
             <div>
                 <x-jet-label for="name" value="İsim ve Soyisim" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
@@ -55,7 +49,6 @@
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                    Bir hesabın var mı ?
                 </a>
-
                 <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>
