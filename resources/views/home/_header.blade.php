@@ -37,7 +37,12 @@
                         <div class="flex p-1 ba-1  d-lg-block">
                             <div class="mt-1 d-block">
                                 <hr class=" d-block d-sm-none mt-1.5">
+                                @if(Auth::user()->type=='user')
                                 <a href="{{route('profile.show')}}" class="text-white box-shadow text-extra-large"><i class="far fa-user"></i>{{Auth::user()->name}}</a>
+                                @endif
+                                @if(Auth::user()->type=='teacher')
+                                    <a href="{{route('dashboard')}}" class="text-white box-shadow text-extra-large"><i class="far fa-user"></i>{{Auth::user()->name}}</a>
+                                @endif
                                 <ul class="list-unstyled">
                                     <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i> Çıkış Yap</a></li>
                                 </ul>

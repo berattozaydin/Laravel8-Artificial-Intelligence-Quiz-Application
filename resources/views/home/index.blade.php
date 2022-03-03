@@ -19,14 +19,15 @@
         <h3 style="text-align: center;">Var Olan Quizler</h3>
         <div class="container padding-top-100px">
             <div class="row">
-
+@foreach($quizzes as $rs)
                     <div class="col-xl-2 col-lg-3 col-md-4 col-6 sm-mb-25px">
-                        <a href="" class="d-block box-shadow background-main-color text-white hvr-float">
-                            <div class="thum"><img style="width: 450px;height: 250px" src="{" alt=""></div>
-                            <h4 class="text-center padding-15px"></h4>
+                        <a href="{{route('quiz.detay',$rs->slug)}}" class="d-block box-shadow background-main-color text-white hvr-float">
+                            <div class="thum" title="{{$rs->description}}"><h6 class="text-center padding-15px">{{$rs->title}}<br>
+                                    Bitiş Tarihi : {{$rs->finished_at}}</h6>
+                            </div>
                         </a>
                     </div>
-
+@endforeach
             </div>
         </div>
     </div>
