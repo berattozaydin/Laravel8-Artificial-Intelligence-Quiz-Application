@@ -21,17 +21,20 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <li><strong>{{$quiz->description}}</strong> </li>
-                                    <button class="btn btn-secondary">{{$quiz->title}} Dersi Quizine Katıl</button>
+
                                 </div>
                                 <div class="col-md-6">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
+                                    <h5 class="card-title">Bilgisayar Mühendisliği</h5>
                                     <h5 class="card-title">Quize Ait Bilgiler</h5>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Bitiş Tarihi : {{$quiz->finished_at}}</li>
                                     <li class="list-group-item">Quiz Soru Sayısı : {{count($quiz->sorulars)}}</li>
-                                    <li class="list-group-item">Katılacak Öğrenci Sayısı:</li>
+
+                                <li class="list-group-item"><a href="{{route('quiz.katil',$quiz->slug)}}" class="btn btn-secondary">{{$quiz->title}} Quizine Katıl</a>
+                                </li>
                                 </ul>
 
                             </div>

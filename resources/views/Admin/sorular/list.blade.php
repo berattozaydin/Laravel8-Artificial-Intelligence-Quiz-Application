@@ -24,7 +24,7 @@
                   <tr>
                       <td>{!! $sorular->question!!}</td>
                       @if($sorular->image_question)
-                          <td><img src="{{asset($sorular->image_question)}}"></td>
+                          <td><img src="{{asset($sorular->image_question)}}" style="height: 50px;width: 50px;"></td>
                       @endif
                       @if($sorular->image_question==null)
                       <td>Resim Yok</td>

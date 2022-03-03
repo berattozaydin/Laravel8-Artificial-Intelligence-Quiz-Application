@@ -19,5 +19,9 @@ class AnaController extends Controller
          return view('home.quiz_detay',compact('quiz'));
 
     }
+    public function quiz_katil($slug){
+        $sinav=Quiz::whereSlug($slug)->with('sorulars')->first();
+        return view('home.sinav',compact('sinav'));
+    }
 
 }
