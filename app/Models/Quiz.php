@@ -18,6 +18,9 @@ class Quiz extends Model
      *
      * @return array
      */
+    public function sonuc(){
+        return $this->hasOne('App\Models\Sonuc')->where('user_id',auth()->user()->id);
+    }
     public function sluggable(): array
     {
         return [

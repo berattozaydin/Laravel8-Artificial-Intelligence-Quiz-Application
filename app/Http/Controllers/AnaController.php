@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Cevap;
 use App\Models\Sonuc;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class AnaController extends Controller
 {
     public function index(){
@@ -18,9 +18,15 @@ class AnaController extends Controller
         return view('dashboard');
     }
     public function quiz_detay($slug){
-         $quiz=Quiz::whereSlug($slug)->withCount('sorulars')->first();
-
-         return view('home.quiz_detay',compact('quiz'));
+        $quiz=Quiz::whereSlug($slug)->with('sonuc')->withCount('sorulars')->first();
+        $user = DB::table('sonucs')->where('user_id', auth()->user()->id)->first();
+      if($user == null){
+          $userid=1;
+      }else
+      {
+          $userid=0;
+      }
+         return view('home.quiz_detay',compact('quiz','userid'));
 
     }
     public function quiz_katil($slug){
