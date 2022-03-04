@@ -22,6 +22,7 @@ Route::get('/home2', function () {
 Route::get('/', [\App\Http\Controllers\AnaController::class, 'index'])->name('anasayfa');
 Route::get('/quiz/detay/{slug}', [\App\Http\Controllers\AnaController::class, 'quiz_detay'])->name('quiz.detay');
 Route::get('/quiz/{slug}', [\App\Http\Controllers\AnaController::class, 'quiz_katil'])->name('quiz.katil');
+Route::post('/quiz/{slug}/sonuc', [\App\Http\Controllers\AnaController::class, 'quiz_sonuc'])->name('quiz.sonuc');
 
 /*Route::group(['middleware'=>['auth','isAdmin'],'prefix'=>'admin'],function(){
     Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');

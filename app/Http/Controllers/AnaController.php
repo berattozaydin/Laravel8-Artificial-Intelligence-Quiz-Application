@@ -23,5 +23,7 @@ class AnaController extends Controller
         $sinav=Quiz::whereSlug($slug)->with('sorulars')->first();
         return view('home.sinav',compact('sinav'));
     }
-
+        public function quiz_sonuc(Request $request,$slug){
+        return $request->post();
+        }
 }

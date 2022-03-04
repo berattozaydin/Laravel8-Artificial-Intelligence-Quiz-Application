@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                 QuizSeeder::class,
                 SorularSeeder::class,
-
+                CevapSeeder::class,
     ]);
 
 

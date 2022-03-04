@@ -17,7 +17,8 @@
                         <h3>Sınav Soruları</h3>
                         <div class="card-body">
                             <div class="card-text">
-                                <form method="post" action="">
+                                <form method="post" action="{{route('quiz.sonuc',$sinav->slug)}}">
+                                    @csrf
                         @foreach($sinav->sorulars as $soru)
 
                             <strong>Soru {{$loop->iteration}}: </strong> <h5 class="mt-2">{!! $soru->question!!}</h5>
@@ -28,25 +29,25 @@
                         <div class="form-check mt-3">
                             <input class="form-check-input" type="radio" name="{{$soru->id}}" id="quiz{{$soru->id}}1" value="a" required>
                             <label class="form-check-label" for="quiz{{$soru->id}}1">
-                                {!!$soru->a!!}
+                              A)  {!!$soru->a!!}
                             </label>
                         </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="{{$soru->id}}" id="quiz{{$soru->id}}2" value="b" required>
                                         <label class="form-check-label" for="quiz{{$soru->id}}2">
-                                            {!!$soru->b!!}
+                                            B)  {!!$soru->b!!}
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="{{$soru->id}}" id="quiz{{$soru->id}}3" value="c" required>
                                         <label class="form-check-label" for="quiz{{$soru->id}}3">
-                                            {!!$soru->c!!}
+                                            C) {!!$soru->c!!}
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="{{$soru->id}}" id="quiz{{$soru->id}}4" value="d" required>
                                         <label class="form-check-label" for="quiz{{$soru->id}}4">
-                                            {!!$soru->d!!}
+                                            D)  {!!$soru->d!!}
                                         </label>
                                     </div>
                                     <hr>
