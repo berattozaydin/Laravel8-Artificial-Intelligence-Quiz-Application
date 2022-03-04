@@ -32,9 +32,9 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Bitiş Tarihi : {{$quiz->finished_at}}</li>
                                     <li class="list-group-item">Quiz Soru Sayısı : {{count($quiz->sorulars)}}</li>
-
                                 <li class="list-group-item"><a href="{{route('quiz.katil',$quiz->slug)}}" class="btn btn-secondary">{{$quiz->title}} Quizine Katıl</a>
                                 </li>
+
                                 </ul>
 
                             </div>

@@ -17,8 +17,9 @@
                         <h3>Sınav Soruları</h3>
                         <div class="card-body">
                             <div class="card-text">
-                                <form method="post" action="{{route('quiz.sonuc',$sinav->slug)}}">
+                                <form method="POST" action="{{route('quiz.sonuc',$sinav->slug)}}">
                                     @csrf
+
                         @foreach($sinav->sorulars as $soru)
 
                             <strong>Soru {{$loop->iteration}}: </strong> <h5 class="mt-2">{!! $soru->question!!}</h5>
