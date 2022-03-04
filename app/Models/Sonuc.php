@@ -9,4 +9,10 @@ class Sonuc extends Model
 {
     use HasFactory;
     protected $fillable=['user_id','quiz_id','puan','dogru','yanlis'];
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+    public function quiz(){
+        return $this->belongsTo('App\Models\Quiz');
+    }
 }

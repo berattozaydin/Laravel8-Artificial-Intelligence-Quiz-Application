@@ -2,10 +2,11 @@
     $setting = \App\Http\Controllers\Admin\SettingController::getsetting()
 @endphp
 <x-app-layout>
-    <x-slot name="header">{{$sorulars->title}} Dersi Soruları</x-slot>
+    <x-slot name="header">Sorular</x-slot>
   <div class="card">
       <div class="card-body">
-          <h5 class="card-title"><a href="{{route('sorulars.create',$sorulars->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Soru Oluştur</a></h5>
+          <h5 class="card-title">
+              <a href="{{route('sorulars.create',$sorular_create->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Soru Oluştur</a></h5>
           <table class="table">
 
               <tr>
@@ -20,7 +21,7 @@
               </tr>
 
               <tbody>
-              @foreach($sorulars->sorulars as $sorular)
+              @foreach($sorular_create->sorulars as $sorular)
                   <tr>
                       <td>{!! $sorular->question!!}</td>
                       @if($sorular->image_question)

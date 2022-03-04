@@ -18,8 +18,8 @@ class SorularController extends Controller
     {
         //soru listeleme
 //quiz bilgisiyle sorular gönderiliyor.
-        $sorulars=Quiz::whereId($id)->with('sorulars')->first();
-        return view('admin.sorular.list',compact('sorulars'));
+      $sorular_create=Quiz::whereId($id)->with('sorulars')->first();
+        return view('admin.sorular.list',compact('sorular_create'));
     }
 
     /**

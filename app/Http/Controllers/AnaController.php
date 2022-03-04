@@ -8,8 +8,20 @@ use App\Models\Cevap;
 use App\Models\Sonuc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class AnaController extends Controller
 {
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
     public function index(){
         $quizzes=Quiz::where('status','publish')->paginate(5);
         return view('home.index',compact('quizzes'));

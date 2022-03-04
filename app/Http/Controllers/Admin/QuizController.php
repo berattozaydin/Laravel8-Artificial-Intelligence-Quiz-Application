@@ -50,7 +50,8 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-
+     $quiz=Quiz::with('sonuclar')->find($id);
+     return view('admin.quizsonuc',compact('quiz'));
     }
 
     /**
