@@ -48,7 +48,9 @@ class SorularController extends Controller
             $request->merge(['image_question'=>$dosyayüklemeyeri]);
         }
         Quiz::find($id)->sorulars()->create($request->post());
-        return view('admin.sorular.list');
+      // return view('admin.sorular.list');
+        //return redirect()->route('sorulars.index', compact('id'));
+        return redirect()->route('sorulars.index',$id);
     }
 
     /**
