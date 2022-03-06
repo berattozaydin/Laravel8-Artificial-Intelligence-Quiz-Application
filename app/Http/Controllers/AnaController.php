@@ -31,14 +31,13 @@ class AnaController extends Controller
     }
     public function quiz_detay($slug){
         $quiz=Quiz::whereSlug($slug)->with('sonuc')->withCount('sorulars')->first();
-        $user = DB::table('sonucs')->where('user_id', auth()->user()->id)->first();
-      if($user == null){
-          $userid=1;
-      }else
-      {
-          $userid=0;
-      }
-         return view('home.quiz_detay',compact('quiz','userid'));
+        $userid = auth()->user()->sonuc;
+        $quizsonuc = Quiz::with('sorulars')->whereSlug($slug)->first();
+        $quizvarmi=0;
+        if($quizsonuc->sonuc){
+            $quizvarmi=1;
+        }
+         return view('home.quiz_detay',compact('quiz','userid','quizvarmi'));
 
     }
     public function quiz_katil($slug){
@@ -72,7 +71,7 @@ $slugdegeri=$quiz->slug;
             'dogru'=>$puanlar,
             'yanlis'=>$yanlis,
         ]);
-        return redirect()->route('quiz.detay',$quiz->slug);
+        return redirect()->route('quiz.detay',[$quiz->slug]);
 
     }
 }

@@ -31,11 +31,12 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Bitiş Tarihi : {{$quiz->finished_at}}</li>
                                     <li class="list-group-item">Quiz Soru Sayısı : {{count($quiz->sorulars)}}</li>
-                                    @if($userid==0)
-                                        <strong>Sınava Daha Önceden Girdin</strong>
-                                        @elseif($userid==1)
+                                @if($quizvarmi==0)
+
                                 <li class="list-group-item"><a href="{{route('quiz.katil',$quiz->slug)}}" class="btn btn-secondary">Quize Katıl</a>
                                 </li>
+@elseif($quizvarmi==1)
+                                   <li class="list-group-item"> <strong>Daha Önceden Sınava Girdin</strong></li>
                                     @endif
                                 </ul>
 
