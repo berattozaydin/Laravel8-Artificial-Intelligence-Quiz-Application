@@ -6,7 +6,7 @@
   <div class="card">
       <div class="card-body">
           <h5 class="card-title">
-              <a href="{{route('sorulars.create',$sorular_create->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Soru Oluştur</a></h5>
+              <a href="{{route('sorulars.create',[$sorular_create?->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Soru Oluştur</a></h5>
           <table class="table">
 
               <tr>

@@ -1,20 +1,19 @@
 @extends('layouts.home')
 @section('content')
-    <div id="page-title" class="padding-tb-30px gradient-white">
-        <div class="container text-left">
+    <div class="height-600px">
+    <div id="page-title" class="gradient-white">
+        <div class="container py-4 text-left">
             <h1 class="font-weight-300">{{$quiz->title}}</h1>
         </div>
     </div>
 
 
-    <div class="container">
-        <div class="row">
+    <div class="container padding-tb-95px max-w-screen-xl px-8">
 
-            <div class="col-lg-8">
-                <div class="margin-bottom-40px card border-0 box-shadow">
-                    <div class="padding-lr-30px padding-tb-20px">
-                        <hr>
-                        <h3>Tanımlamalar</h3>
+                <div class="card border-0 box-shadow p-2">
+                    <div class="text-center my-3">
+                        <h2>Tanımlamalar</h2>
+                    </div>
                         <ul>
 
 
@@ -35,7 +34,7 @@
                                     @if($userid==0)
                                         <strong>Sınava Daha Önceden Girdin</strong>
                                         @elseif($userid==1)
-                                <li class="list-group-item"><a href="{{route('quiz.katil',$quiz->slug)}}" class="btn btn-secondary">{{$quiz->title}} Quizine Katıl</a>
+                                <li class="list-group-item"><a href="{{route('quiz.katil',$quiz->slug)}}" class="btn btn-secondary">Quize Katıl</a>
                                 </li>
                                     @endif
                                 </ul>
@@ -45,16 +44,12 @@
                             </div>
                         </ul>
 
-                        <hr>
-                        <hr>
-                        <div class="row no-gutters">
-
-                        </div>
-                    </div>
 
                 </div>
 
-            </div>
-        </div>
+
+
     </div>
+    </div>
+    <div class="height-150px"></div>
 @endsection
