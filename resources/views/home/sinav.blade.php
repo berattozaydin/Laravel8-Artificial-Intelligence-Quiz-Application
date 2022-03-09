@@ -53,7 +53,8 @@
                                     </div>
                                     <hr>
                             @endforeach
-                                    <button class="btn btn-primary btn-sm btn-block" type="submit">Sınavı Bitir</button>
+                                        <button class="btn btn-primary btn-sm btn-block" type="submit">Sınavı Bitir</button>
+
                                 </form>
                     </div>
                         </div>

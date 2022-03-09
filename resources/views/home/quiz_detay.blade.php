@@ -7,7 +7,6 @@
         </div>
     </div>
 
-
     <div class="container padding-tb-95px max-w-screen-xl px-8">
 
                 <div class="card border-0 box-shadow p-2">
