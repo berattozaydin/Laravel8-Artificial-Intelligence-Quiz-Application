@@ -20,6 +20,7 @@ Route::post('register','UserController@register');
 Route::middleware(['auth:api'])->group(function(){
     Route::get('user','UserController@index');
     Route::get('liste','ApiController@liste');
+    Route::get('sorular/{slug}','ApiController@sorular');
     Route::Post('logout','UserController@logout');
 });
 
