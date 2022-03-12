@@ -23,14 +23,14 @@ use Laravel\Sanctum\Sanctum;
 
 Route::post('register','UserController@register');
 Route::post('login',[UserController::class,'login']);
-
+Route::get('liste',[ApiController::class,'liste']);
 /*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });*/
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('user',[UserController::class,'index']);
-    Route::get('liste','ApiController@liste');
+
     Route::get('sorular/{slug}','ApiController@sorular');
     Route::Post('logout','UserController@logout');
 });
