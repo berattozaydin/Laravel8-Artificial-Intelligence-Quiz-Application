@@ -1,12 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
-use Auth;
 use Illuminate\Auth\AuthManager;
 //use Illuminate\Support\Facades\Auth;
+//use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Validator;
+
+//use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\NewAccessToken;
+use Laravel\Sanctum\Sanctum;
 
 class UserController extends Controller
 {
@@ -26,23 +32,27 @@ class UserController extends Controller
            ]);
        return $result;
    }
-   public function login(Request $request){
-       $credentials = $request->validate([
-           'email'=>'required|email',
-           'password'=>'required'
-       ]);
-       if(Auth::attempt($credentials)){
-           $user=Auth::user();
-           $token=md5(time()).'.'.md5($request->email);
-           $user->forceFill([
-               'api_token'=>$token,
-           ])->save();
-           return response()->json(['token'=>$token]);
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-       }
-       return response()->json(['message'=>'The provided credentials do not match our records']);
-   }
-   public function logout(Request $request){
+        $user = User::where('email', $request->email)->first();
+
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            return response([
+                'message' => ['The provided credentials are incorrect.']
+            ], 500);
+        }
+
+        $userToken = $user->createToken('api_token')->plainTextToken;
+
+        return response(['token' => $userToken], 200);
+    }
+
+    public function logout(Request $request){
        $request->user()->forceFill(['api_token'=>null])->save();
        return response()->json(['message'=>'success']);
    }

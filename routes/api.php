@@ -1,9 +1,14 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Nette\Schema\ValidationException;
+use Laravel\Sanctum\Sanctum;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,12 +20,17 @@ use App\Http\Controllers\ApiController;
 |
 */
 
-Route::post('login','UserController@login');
+
 Route::post('register','UserController@register');
-Route::middleware(['auth:api'])->group(function(){
-    Route::get('user','UserController@index');
+Route::post('login',[UserController::class,'login']);
+
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
+});*/
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('user',[UserController::class,'index']);
     Route::get('liste','ApiController@liste');
     Route::get('sorular/{slug}','ApiController@sorular');
     Route::Post('logout','UserController@logout');
 });
-
