@@ -23,7 +23,7 @@ use Laravel\Sanctum\Sanctum;
 
 Route::post('register','UserController@register');
 Route::post('login',[UserController::class,'login']);
-
+Route::post('/quiz/{slug}', [\App\Http\Controllers\ApiController::class, 'quiz_sonuc']);
 /*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });*/

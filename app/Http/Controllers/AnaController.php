@@ -60,7 +60,6 @@ class AnaController extends Controller
             if($sorucevap->correctanswer===$request->post($sorucevap->id)){
                 $puanlar+=1;
             }
-
         }
     $puan=(100/count($quiz->sorulars))*$puanlar;
     $yanlis=count($quiz->sorulars)-$puanlar;
