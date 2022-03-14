@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\AuthManager;
@@ -19,6 +20,7 @@ class UserController extends Controller
    public function index(Request $request){
        return $request->user();
    }
+
    public function register(Request $request){
        $request->validate([
            'name'=>'required',

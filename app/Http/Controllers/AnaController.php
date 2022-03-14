@@ -47,7 +47,7 @@ class AnaController extends Controller
     public function quiz_sonuc(Request $request,$slug){
        $puanlar=0;
         $quiz = Quiz::with('sorulars')->whereSlug($slug)->first();
-$slugdegeri=$quiz->slug;
+        $slugdegeri=$quiz->slug;
         foreach($quiz->sorulars as $sorucevap){
             $sorucevap->id.'-'.$sorucevap->correctanswer.'/'.$request->post($sorucevap->id).'<br>';
             Cevap::create([

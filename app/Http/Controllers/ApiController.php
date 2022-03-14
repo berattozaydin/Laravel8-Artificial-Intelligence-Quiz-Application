@@ -12,6 +12,10 @@ class ApiController extends Controller
    public function liste(){
        return response()->json(Quiz::where('status','publish')->paginate(5));
    }
+    public function quiz_katil($slug){
+       return response()->json($sinav=Quiz::whereSlug($slug)->with('sorulars')->first());
+
+    }
    public function sorular($slug){
        return Quiz::whereSlug($slug)->with('sorulars')->first();
    }
