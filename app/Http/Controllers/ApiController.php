@@ -22,17 +22,29 @@ class ApiController extends Controller
         return response()->json(Quiz::whereSlug($slug)->with('sorulars')->first());
 
     }
-    public function quiz_sonuc($slug,$puanlar){
+   /* public function liste_user(Request $request,$slug){
         $quiz = Quiz::with('sorulars')->whereSlug($slug)->first();
-        $puan=(100/count($quiz->sorulars))*$puanlar;
-        $yanlis=$puanlar-count($quiz->sorulars);
         Sonuc::create([
+            'user_id'=>auth()->user()->id,
+            'quiz_id'=>$quiz->id,
+            'puan'=>$request->puan,
+            'dogru'=>$request->dogru,
+            'yanlis'=>$request->yanlis,
+        ]);
+    }*/
+   public function quiz_sonuc(Request $request){
+        $quiz = Quiz::with('sorulars')->whereSlug($request->slug)->first();
+       $puan=(100/count($quiz->sorulars))*$request->dogrusayisi;
+        $yanlis=count($quiz->sorulars)-$request->dogrusayisi;
+
+       $result= Sonuc::create([
         'user_id'=>auth()->user()->id,
         'quiz_id'=>$quiz->id,
         'puan'=>$puan,
-        'dogru'=>$puanlar,
+        'dogru'=>$request->dogrusayisi,
         'yanlis'=>$yanlis,
 ]);
+       return $result;
     }
 
     public function sorular($slug)
