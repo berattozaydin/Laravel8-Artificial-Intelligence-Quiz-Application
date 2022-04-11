@@ -27,12 +27,12 @@ Route::post('login',[UserController::class,'login']);
 /*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });*/
-
+Route::get('/quiz/{slug}', [ApiController::class,'quiz_katil']);
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('user',[UserController::class,'index']);
     Route::get('liste',[ApiController::class,'liste']);
    // Route::Post("user_liste/{slug}",[ApiController::class,'liste_user']);
-    Route::get('/quiz/{slug}', [ApiController::class,'quiz_katil']);
+   // Route::get('/quiz/{slug}', [ApiController::class,'quiz_katil']);
     Route::get('sorular/{slug}','ApiController@sorular');
     Route::Post('logout','UserController@logout');
     Route::Post('/quiz/{slug}/sonucs',[ApiController::class,'quiz_sonuc']);
